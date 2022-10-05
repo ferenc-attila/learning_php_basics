@@ -6,6 +6,8 @@ services:
 
   nginx:
     image: nginx:1.23-alpine
+    container_name: nginx
+    restart: "no"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
       - ../web-app/:/var/www/html
@@ -19,7 +21,7 @@ services:
   php-basic:
     image: php:8.1-fpm-alpine
     container_name: php-basic
-    restart: on-failure
+    restart: "no"
     volumes:
       - ../web-app/:/var/www/html
       - ./logs/php.log:/var/log/fpm-php.www.log
